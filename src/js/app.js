@@ -1,4 +1,9 @@
+
+ 
 App = {
+
+
+
   web3Provider: null,
   contracts: {},
   names: new Array(),
@@ -64,9 +69,10 @@ App = {
     App.contracts.vote.deployed().then(function(instance) {
       return instance.minter();
     }).then(function(result) {
-      App.minter = result;
-      jQuery('#minter').text("Minter : "+result);
+      App.minter = result.toLowerCase();
+      jQuery('#minter').text("Minter : "+result.toLowerCase());
       if(App.minter != App.currentAccount){
+       console.log(App.minter, App.currentAccount)
         jQuery('#create_coin').css('display','none');
         jQuery('#send_coin').css('width','50%');
         jQuery('#balance_coin').css('width','50%');
